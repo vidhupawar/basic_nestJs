@@ -1,15 +1,19 @@
-import { ProcutsModule } from './products/products.module';
-import { ProductsService } from './products/products.service';
+import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+
+import { ProductsModule } from './products/products.module';
 import { AppService } from './app.service';
+import { AppController } from './app.controller';
+
 
 @Module({
   imports: [
-    ProcutsModule
+    ProductsModule,
+    MongooseModule.forRoot('mongodb+srv://{username}:{password}@cluster1.dnffxib.mongodb.net/nestjs-demo?retryWrites=true&w=majority'),
   ],
   controllers: [AppController],
   providers: [
-    ProductsService, AppService],
+    AppService
+  ],
 })
 export class AppModule { }
