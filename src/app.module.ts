@@ -9,7 +9,7 @@ import { AppController } from './app.controller';
 @Module({
   imports: [
     ProductsModule,
-    MongooseModule.forRoot('mongodb+srv://{username}:{password}@cluster1.dnffxib.mongodb.net/nestjs-demo?retryWrites=true&w=majority'),
+    //MongooseModule.forRoot('mongodb+srv://{username}:{password}@cluster1.dnffxib.mongodb.net/nestjs-demo?retryWrites=true&w=majority'),
   ],
   controllers: [AppController],
   providers: [
