@@ -1,24 +1,19 @@
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
 
-import { ProductsModule } from './products/products.module';
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig  } from '@nestjs/apollo';
+import { TalonicModule } from './talonic/talonic.module';
+import { TableDatabaseModule } from './table_database/table_database.module';
 
 
 
 @Module({
   imports: [
-    ProductsModule,
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: true,
-      context: ({ req }) => ({ req }),
-    }),
-   MongooseModule.forRoot('mongodb+srv://vidhupawaradmin:vidhu123@cluster1.dnffxib.mongodb.net/nestjs-demo?retryWrites=true&w=majority'),
-  //      MongooseModule.forRoot(process.env.MONGODB_URL),
+    //mongodb+srv://<username>:<password>@gremlin.rbzxrsl.mongodb.net/?retryWrites=true&w=majority
+   MongooseModule.forRoot('mongodb+srv://vidhupawaradmin:vidhu123@cluster1.dnffxib.mongodb.net/?retryWrites=true&w=majority'),
+   TalonicModule,
+   TableDatabaseModule,
   ],
   controllers: [AppController],
   providers: [
